@@ -1,0 +1,17 @@
+# Using and official Python runtime as the base image
+FROM python:3.9-slim
+
+# Setting the Working Dir in the container
+WORKDIR /app
+
+# Copy the req file to the container
+COPY requirements.txt .
+
+# Installing Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the project files to the dir
+COPY . .
+
+# Run python script
+CMD ["python", "main.py"]
